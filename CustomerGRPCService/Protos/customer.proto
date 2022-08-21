@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+option csharp_namespace = "CustomerGRPCService";
+
+package customer;
+
+//Customer service definition
+service Customer {
+	//sends request
+	rpc GetSpecificCustomer(CustRequestByAuth) returns (CustInfoResponse);
+	rpc GetAllCustomers(AllCustRequest) returns (stream CustInfoResponse);
+}
+//request info
+message AllCustRequest {
+	
+}
+message CustRequestByAuth {
+	string username = 1;
+	string password = 2;
+}
+//response info
+message CustInfoResponse {
+	string firstname = 1;
+	string lastname = 2;
+	string company = 4;
+	string role = 5;
+	int32 experience = 6;
+	string technology = 7;
+}
